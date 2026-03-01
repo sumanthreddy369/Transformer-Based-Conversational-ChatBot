@@ -1,112 +1,99 @@
 🧠 Transformer-Based Ubuntu Technical Support Chatbot
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 📌 Overview
 
 This project implements a Transformer-based encoder–decoder conversational AI model trained on the Ubuntu Dialogue Corpus for multi-turn technical support conversations.
 
-The system includes:
-
-Large-scale dialogue preprocessing (~165M messages)
-
-Subword tokenization using SentencePiece
-
-Custom Transformer architecture implemented in PyTorch
-
-GPU-based training and evaluation
-
-Greedy decoding for response generation
-
-This project demonstrates end-to-end conversational AI system development — from raw data to trained model.
-
+The system includes large-scale dialogue preprocessing, subword tokenization, and a custom Transformer architecture implemented using PyTorch.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 📂 Dataset
 
-Ubuntu Dialogue Corpus
+. Ubuntu Dialogue Corpus
 
-165M+ cleaned messages
+. 165M+ cleaned messages
 
-1.8M+ multi-turn dialogues
+. 1.8M+ multi-turn dialogues
 
-Technical support domain
-
-Right-skewed token distribution (mean ≈ 10 tokens per message)
-
+. Technical support domain
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 🏗 Project Architecture
-🔹 Data Pipeline (Part 1)
 
-Merged multiple dialogue sources
+- Data Pipeline (Part 1)
 
-Removed duplicates and null entries
+. Merged multiple dialogue datasets
 
-Filtered one-sided conversations
+. Removed duplicates and null entries
 
-Cleaned and normalized text
+. Filtered incomplete and one-sided conversations
 
-Token length analysis
+. Cleaned and normalized text
 
-Aggregated chronological multi-turn dialogues
+. Token length analysis
 
-Generated structured training corpus
+. Aggregated chronological multi-turn dialogues
+---------------------------------------------------------
+- Modeling Pipeline (Part 2)
 
-🔹 Modeling Pipeline (Part 2)
-Tokenization
+. Tokenization
 
-SentencePiece subword tokenizer
+. SentencePiece subword tokenizer
 
-Vocabulary size: 10,000
+. Vocabulary size: 10,000
 
-Special tokens: <BOS>, <EOS>, <PAD>
+. Special tokens: <BOS>, <EOS>, <PAD>
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Transformer Architecture
 
-Transformer Architecture
+. Encoder–Decoder structure
 
-Encoder–Decoder structure
+. Embedding dimension: 256
 
-Embedding dimension: 256
+. Attention heads: 8
 
-Attention heads: 8
+. Encoder/Decoder layers: 3
 
-Encoder/Decoder layers: 3
+. Feedforward dimension: 1024
 
-Feedforward dimension: 1024
+. Dropout: 0.1
 
-Dropout: 0.1
+. Sinusoidal positional encoding
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Sinusoidal positional encoding
+- Training Setup
 
-Training Setup
+. Adam optimizer
 
-Optimizer: Adam
+. Learning rate warm-up (4,000 steps)
 
-Learning rate warm-up (4,000 steps)
+. Cross-entropy loss (padding masked)
 
-Cross-entropy loss (padding masked)
+. ~200,000 training batches
 
-~200,000 training batches
-
-GPU acceleration (CUDA)
-
+. GPU acceleration (CUDA)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 📊 Results
-Metric	Value
-Initial Training Loss	4.707
-Final Training Loss	4.236
-Validation Loss	4.027
-BLEU Score	1.034
 
-Validation loss lower than training loss indicates stable generalization.
-
+| Metric                | Value |
+| --------------------- | ----- |
+| Initial Training Loss | 4.707 |
+| Final Training Loss   | 4.236 |
+| Validation Loss       | 4.027 |
+| BLEU Score            | 1.034 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 🛠 Tech Stack
 
-Python
+. Python
 
-PyTorch
+. PyTorch
 
-NumPy
+. NumPy
 
-Pandas
+. Pandas
 
-Matplotlib
+. Matplotlib
 
-SentencePiece
+. SentencePiece
 
-CUDA
+. CUDA
