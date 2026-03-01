@@ -1,76 +1,112 @@
-Transformer-Based Ubuntu Technical Support Chatbot
-Overview
+🧠 Transformer-Based Ubuntu Technical Support Chatbot
+
+
+
+📌 Overview
 
 This project implements a Transformer-based encoder–decoder conversational AI model trained on the Ubuntu Dialogue Corpus for multi-turn technical support conversations.
 
-The system includes large-scale data preprocessing, subword tokenization, and a custom Transformer architecture implemented using PyTorch.
+The system includes:
 
-Dataset
+Large-scale dialogue preprocessing (~165M messages)
+
+Subword tokenization using SentencePiece
+
+Custom Transformer architecture implemented in PyTorch
+
+GPU-based training and evaluation
+
+Greedy decoding for response generation
+
+This project demonstrates end-to-end conversational AI system development — from raw data to trained model.
+
+📂 Dataset
 
 Ubuntu Dialogue Corpus
 
-~165 million cleaned messages
+165M+ cleaned messages
 
-1.8+ million multi-turn dialogues
+1.8M+ multi-turn dialogues
 
-Technical support domain conversations
+Technical support domain
 
-Project Structure
-ubuntu-dialogue-transformer-chatbot-part-1.ipynb   # Data preprocessing
-ubuntu-dialogue-transformer-chatbot-part-2.ipynb   # Model training and inference
-README.md
-Part 1 – Data Preprocessing
+Right-skewed token distribution (mean ≈ 10 tokens per message)
 
-Merged multiple dialogue datasets
+🏗 Project Architecture
+🔹 Data Pipeline (Part 1)
 
-Removed duplicate and null text records
+Merged multiple dialogue sources
 
-Filtered incomplete and one-sided dialogues
+Removed duplicates and null entries
 
-Cleaned and normalized text (URL removal, lowercase, whitespace normalization)
+Filtered one-sided conversations
+
+Cleaned and normalized text
 
 Token length analysis
 
 Aggregated chronological multi-turn dialogues
 
-Generated structured dataset for training
+Generated structured training corpus
 
-Part 2 – Modeling and Training
+🔹 Modeling Pipeline (Part 2)
+Tokenization
 
-Subword tokenization using SentencePiece (vocab size: 10,000)
+SentencePiece subword tokenizer
 
-Transformer encoder–decoder implementation (PyTorch)
+Vocabulary size: 10,000
+
+Special tokens: <BOS>, <EOS>, <PAD>
+
+Transformer Architecture
+
+Encoder–Decoder structure
 
 Embedding dimension: 256
 
 Attention heads: 8
 
-Encoder/decoder layers: 3
+Encoder/Decoder layers: 3
 
 Feedforward dimension: 1024
 
 Dropout: 0.1
 
-Cross-entropy loss with padding mask
+Sinusoidal positional encoding
 
-Adam optimizer with warm-up learning rate schedule
+Training Setup
 
-Greedy decoding for inference
+Optimizer: Adam
 
-Results
+Learning rate warm-up (4,000 steps)
 
-Final Training Loss: 4.236
+Cross-entropy loss (padding masked)
 
-Validation Loss: 4.027
+~200,000 training batches
 
-BLEU Score: 1.034
+GPU acceleration (CUDA)
 
-Technologies Used
+📊 Results
+Metric	Value
+Initial Training Loss	4.707
+Final Training Loss	4.236
+Validation Loss	4.027
+BLEU Score	1.034
+
+Validation loss lower than training loss indicates stable generalization.
+
+🛠 Tech Stack
 
 Python
+
 PyTorch
+
 NumPy
+
 Pandas
+
 Matplotlib
+
 SentencePiece
-CUDA (GPU acceleration)
+
+CUDA
